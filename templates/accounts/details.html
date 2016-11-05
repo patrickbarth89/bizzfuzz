@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load eligible %}
+{% load bizzfuzz %}
+
+{% block breadcrumb %}
+    <li class="active">View user "{{ user.username }}"</li>
+{% endblock %}
+
+{% block content %}
+    <dl class="dl-horizontal">
+        <dt>username</dt>
+        <dd class="username">{{ user.username }}</dd>
+
+        <dt>birthday</dt>
+        <dd class="birthday">{{ user.birthday|date:"Y-m-d" }}</dd>
+
+        <dt>eligible</dt>
+        <dd class="eligible">{% eligible user.birthday %}</dd>
+
+        <dt>random number</dt>
+        <dd class="random_number">{{ user.random_number }}</dd>
+
+        <dt>bizzfuzz</dt>
+        <dd class="bizzfuzz">{% bizzfuzz user.random_number %}</dd>
+    </dl>
+{% endblock %}
